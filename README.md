@@ -1,4 +1,4 @@
 X-Piano
 =======
 
-Now you can make your own piano!
+Please see the `gh-pages` branch for the code and resources.
