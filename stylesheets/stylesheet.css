@@ -264,7 +264,7 @@ Full-Width Styles
 
 .inner {
   position: relative;
-  max-width: 640px;
+  max-width: 1024px;
   padding: 20px 10px;
   margin: 0 auto;
 }
@@ -358,7 +358,7 @@ Full-Width Styles
   border-bottom: 1px solid #111;
 }
 
-#main_content {
+#main_content, main {
   padding-top: 40px;
 }
 
