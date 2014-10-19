@@ -67,7 +67,7 @@ var Piano = function() {
         if (!delay) {
             delay = 0;
         }
-        
+
         var source = _context.createBufferSource();
         var gain = _context.createGain();
 
@@ -159,16 +159,16 @@ var Piano = function() {
     }
 
 
-    loadSound("../sound/default.wav");
-    loadSound("../sound/kick.mp3");  // https://www.freesound.org/people/TicTacShutUp/sounds/428/
-    loadSound("../sound/snare.mp3");  // https://www.freesound.org/people/TicTacShutUp/sounds/439/
+    loadSound("sound/default.wav");
+    loadSound("sound/kick.mp3");  // https://www.freesound.org/people/TicTacShutUp/sounds/428/
+    loadSound("sound/snare.mp3");  // https://www.freesound.org/people/TicTacShutUp/sounds/439/
 
     return {
         lowerKey: function(keyElement) {
             var attribs = keyElement.attributes;
             var pitch = keyElement.hasAttribute('pitch') ? Number.parseFloat(attribs['pitch'].value) : 1;
 
-            _playing[keyElement] = playSound('../sound/default.wav', pitch);
+            _playing[keyElement] = playSound('sound/default.wav', pitch);
         },
 
         raiseKey: function(keyElement) {
