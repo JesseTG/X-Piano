@@ -8,7 +8,6 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="description" content="X Piano: Now you can make your own piano!">
-    <script src="script/piano.js"></script>
     <script src="script/jquery-2.1.1.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
     <title>X Piano</title>
@@ -39,20 +38,20 @@
                     <div id="col1">
                         <fieldset id="convolve">
                             <legend>Convolve
-                                <input id="convolve-checkbox" type="checkbox" onchange="Piano.params.convolve.enabled = this.checked" />
+                                <input type="checkbox" data-filter="convolve" data-parameter="enabled" />
                             </legend>
                             <label>
                                 <span>Normalize</span>
-                                <input type="checkbox" onchange="Piano.params.convolve.normalize = this.checked" checked />
+                                <input type="checkbox" checked data-filter="convolve" data-parameter="normalize" />
                             </label>
                         </fieldset>
                         <fieldset id="biquad">
                             <legend>Biquad Filter
-                                <input type="checkbox" onchange="Piano.params.biquad.enabled = this.checked" />
+                                <input type="checkbox" data-filter="biquad" data-parameter="enabled" />
                             </legend>
                             <label>
                                 <span>Type</span>
-                                <select onchange="Piano.params.biquad.type = this.value">
+                                <select data-filter="biquad" data-parameter="type">
                                     <option value="lowpass">Low-pass</option>
                                     <option value="highpass">High-pass</option>
                                     <option value="bandpass">Band-pass</option>
@@ -66,19 +65,19 @@
                             <br/>
                             <label>
                                 <span>Frequency</span>
-                                <input type="range" min="4.3" max="13" step=".1" value="8.8" onchange="Piano.params.biquad.frequency = this.value" />
+                                <input type="range" min="4.3" max="13" step=".1" value="8.8" data-filter="biquad" data-parameter="frequency" />
                             </label>
                             <label>
                                 <span>Detuning</span>
-                                <input type="range" min="0" max="1200" step="1" value="0" onchange="Piano.params.biquad.detune = this.value" />
+                                <input type="range" min="0" max="1200" step="1" value="0" data-filter="biquad" data-parameter="detune" />
                             </label>
                             <label title="Not used for Low-shelf and High-shelf filters">
                                 <span>Quality</span>
-                                <input type="range" min="-4" max="3" step=".1" value="0" onchange="Piano.params.biquad.q = this.value" />
+                                <input type="range" min="-4" max="3" step=".1" value="0" data-filter="biquad" data-parameter="q" />
                             </label>
                             <label title="Used only for Low-shelf, High-shelf, and Peaking filters">
                                 <span>Gain (dB)</span>
-                                <input type="range" min="-40" max="40" step="1" value="0" onchange="Piano.params.biquad.gain = this.value" />
+                                <input type="range" min="-40" max="40" step="1" value="0" data-filter="biquad" data-parameter="gain" />
                             </label>
                         </fieldset>
 
@@ -87,44 +86,44 @@
                     <div id="col2">
                         <fieldset id="compress">
                             <legend>Compressor
-                                <input id="compress-checkbox" type="checkbox" onchange="Piano.params.compress.enabled = this.checked" />
+                                <input type="checkbox" data-filter="compress" data-parameter="enabled" />
                             </legend>
                             <label>
                                 <span>Threshold</span>
-                                <input type="range" min="-100" max="0" step=".1" value="-24" onchange="Piano.params.compress.threshold = this.value" />
+                                <input type="range" min="-100" max="0" step=".1" value="-24" data-filter="compress" data-parameter="threshold" />
                             </label>
                             <br/>
                             <label>
                                 <span>Knee</span>
-                                <input type="range" min="0" max="40" step=".1" value="30" onchange="Piano.params.compress.knee = this.value" />
+                                <input type="range" min="0" max="40" step=".1" value="30" data-filter="compress" data-parameter="knee" />
                             </label>
                             <br/>
                             <label>
                                 <span>Ratio</span>
-                                <input type="range" min="1" max="20" step=".1" value="12" onchange="Piano.params.compress.ratio = this.value" />
+                                <input type="range" min="1" max="20" step=".1" value="12" data-filter="compress" data-parameter="ratio" />
                             </label>
                             <label>
                                 <span>Reduction</span>
-                                <input type="range" min="-20" max="0" step=".1" value="0" onchange="Piano.params.compress.reduction = this.value" />
+                                <input type="range" min="-20" max="0" step=".1" value="0" data-filter="compress" data-parameter="reduction" />
                             </label>
                             <label>
                                 <span>Attack</span>
-                                <input type="range" min="0" max="1" step=".001" value=".003" onchange="Piano.params.compress.attack = this.value" />
+                                <input type="range" min="0" max="1" step=".001" value=".003" data-filter="compress" data-parameter="attack" />
                             </label>
                             <label>
                                 <span>Release</span>
-                                <input type="range" min="0" max="1" step=".01" value=".25" onchange="Piano.params.compress.release = this.value" />
+                                <input type="range" min="0" max="1" step=".01" value=".25" data-filter="compress" data-parameter="release" />
                             </label>
                         </fieldset>
                     </div>
                     <div id="col3">
                         <fieldset id="mix-tone">
                             <legend>Mix Tone
-                                <input id="mix-tone-checkbox" type="checkbox" onchange="Piano.params.mix_tone.enabled = this.checked" />
+                                <input type="checkbox" data-filter="mix_tone" data-parameter="enabled" />
                             </legend>
                             <label>
                                 <span>Type</span>
-                                <select onchange="Piano.params.mix_tone.type = this.value">
+                                <select data-filter="mix_tone" data-parameter="type">
                                     <option value="sine">Sine</option>
                                     <option value="square">Square</option>
                                     <option value="sawtooth">Sawtooth</option>
@@ -134,25 +133,25 @@
                             <br/>
                             <label>
                                 <span>Frequency</span>
-                                <input type="range" min="4.3" max="11" step=".1" value="8.8" onchange="Piano.params.mix_tone.frequency = this.value" />
+                                <input type="range" min="4.3" max="11" step=".1" value="8.8" data-filter="mix_tone" data-parameter="frequency" />
                             </label>
                             <br/>
                             <label>
                                 <span>Detuning</span>
-                                <input type="range" min="0" max="1200" step="1" value="0" onchange="Piano.params.mix_tone.detune = this.value" />
+                                <input type="range" min="0" max="1200" step="1" value="0" data-filter="mix_tone" data-parameter="detune" />
                             </label>
                         </fieldset>
                         <fieldset id="volume">
                             <legend>Volume</legend>
                             <label>
                                 <span>Piano</span>
-                                <input type="range" name="piano-volume" min="0" max="1" step=".01" value="1" onchange="Piano.params.volume = this.value" />
+                                <input type="range" name="piano-volume" min="0" max="1" step=".01" value="1" data-filter="volume" data-parameter="piano" />
                             </label>
-                            <br/>
+                            <!--br/>
                             <label>
                                 <span>Beat</span>
-                                <input type="range" name="beat-volume" min="0" max="1" step=".01" value="1" />
-                            </label>
+                                <input type="range" name="beat-volume" min="0" max="1" step=".01" value="1" data-filter="volume" data-parameter="beat" />
+                            </label-->
                         </fieldset>
                     </div>
                     <div id="col4">
@@ -165,19 +164,19 @@
                             <br/>
                             <label>
                                 <span>Loop Sound</span>
-                                <input type="checkbox" checked onchange="Piano.params.loop = this.checked" />
+                                <input type="checkbox" checked data-filter="loop" data-parameter="enabled" />
                             </label>
-                            <br/>
+                            <!--br/>
                             <label>
                                 <span>Beat</span>
-                                <select>
+                                <select onchange="Piano.playBeat(this.value)">
                                     <option value="none">None</option>
                                     <option value="beat1">Beat 1</option>
                                     <option value="beat2">Beat 2</option>
                                 </select>
-                            </label>
+                            </label-->
                             <br/>
-                            <button type="reset">Reset Piano</button>
+                            <button type="reset" id="reset">Reset Piano</button>
                         </fieldset>
                     </div>
                 </form>
@@ -202,7 +201,7 @@
         </footer>
     </div>
 
-
+    <script src="script/piano.js"></script>
 </body>
 
 </html>

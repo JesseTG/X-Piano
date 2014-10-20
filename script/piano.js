@@ -1,12 +1,11 @@
 var Piano = function() {
-
     var _context;
     var _playing = {};
-    var _sounds = {};
-    var _params = {
+    var _defaults = {
         beat: "none",
-        volume: 1,
-        loop: true,
+        loop: {
+            enabled: true
+        },
         convolve: {
             enabled: false,
             normalize: true
@@ -32,18 +31,93 @@ var Piano = function() {
             q: 0,
             gain: 0,
             detune: 0
+        },
+        volume: {
+            piano: 1,
+            beat: 1
         }
-    }
+    };
+
+    // Cloning objects in JavaScript is a bitch.
+    var _params = {
+        beat: "none",
+        loop: {
+            enabled: true
+        },
+        convolve: {
+            enabled: false,
+            normalize: true
+        },
+        compress: {
+            threshold: -24,
+            knee: 30,
+            ratio: 12,
+            enabled: false,
+            reduction: 0,
+            attack: .003
+        },
+        mix_tone: {
+            enabled: false,
+            frequency: 8.8,
+            type: "sine",
+            detune: 0
+        },
+        biquad: {
+            enabled: false,
+            type: "lowpass",
+            biquad: 8.5,
+            q: 0,
+            gain: 0,
+            detune: 0
+        },
+        volume: {
+            piano: 1,
+            beat: 1
+        }
+    };
+    var _current;
+
+    var _beats = {};
+
+
+    $('input[type=checkbox]').change(function(event) {
+        var data = event.target.dataset;
+        _params[data.filter][data.parameter] = event.target.checked;
+    });
+
+    $('input[type=range], select[data-filter]').change(function(event) {
+        var data = event.target.dataset;
+        _params[data.filter][data.parameter] = event.target.value;
+    });
+
+    $('#reset').click(function(event) {
+        loadSound('sound/default.wav');
+
+        for (var i in _params) {
+            for (var j in _params[i]) {
+                _params[i][j] = _defaults[i][j];
+
+            }
+        }
+
+        for (var i in _playing) {
+            for (var j in _playing[i]) {
+                _playing[i][j].stop();
+                delete _playing[i][j];
+            }
+        }
+    });
+
 
     function loadSound(path) {
         var request = new XMLHttpRequest();
 
         request.open('GET', path, true);
-        request.responseType = "arraybuffer";
+        request.responseType = 'arraybuffer';
 
         request.onload = function() {
             _context.decodeAudioData(request.response, function(buffer) {
-                _sounds[path] = buffer;
+                _current = buffer;
             }, function(error) {
                 alert(error);
             });
@@ -51,19 +125,7 @@ var Piano = function() {
         request.send();
     }
 
-    function beat1() {
-        while (_params.beat == 'beat1') {
-
-        }
-    }
-
-    function beat2() {
-        while (_params.beat == 'beat2') {
-
-        }
-    }
-
-    function playSound(path, pitch, delay) {
+    function playSound(current, pitch, delay) {
         if (!delay) {
             delay = 0;
         }
@@ -75,10 +137,10 @@ var Piano = function() {
         var sources = [source];
 
         source.playbackRate.value = pitch;
-        source.buffer = _sounds[path];
-        source.loop = _params.loop;
+        source.buffer = current;
+        source.loop = _params.loop.enabled;
 
-        gain.gain.value = _params.volume;
+        gain.gain.value = _params.volume.piano;
 
         function enableBiquad() {
             if (_params.biquad.enabled) {
@@ -114,7 +176,7 @@ var Piano = function() {
                 var convolve = _context.createConvolver();
 
                 convolve.normalize = _params.convolve.normalize;
-                convolve.buffer = _sounds[path];
+                convolve.buffer = _current;
 
                 nodes.push(convolve);
             }
@@ -158,17 +220,16 @@ var Piano = function() {
         alert(e + "\nThis browser doesn't support WebAudio.  Use a newer browser like Chrome or Firefox.");
     }
 
-
+    //loadSound("sound/kick.mp3"); // https://www.freesound.org/people/TicTacShutUp/sounds/428/
+    //loadSound("sound/snare.mp3"); // https://www.freesound.org/people/TicTacShutUp/sounds/439/
     loadSound("sound/default.wav");
-    loadSound("sound/kick.mp3");  // https://www.freesound.org/people/TicTacShutUp/sounds/428/
-    loadSound("sound/snare.mp3");  // https://www.freesound.org/people/TicTacShutUp/sounds/439/
 
     return {
         lowerKey: function(keyElement) {
             var attribs = keyElement.attributes;
             var pitch = keyElement.hasAttribute('pitch') ? Number.parseFloat(attribs['pitch'].value) : 1;
 
-            _playing[keyElement] = playSound('sound/default.wav', pitch);
+            _playing[keyElement] = playSound(_current, pitch);
         },
 
         raiseKey: function(keyElement) {
@@ -196,8 +257,7 @@ var Piano = function() {
             var f = new FileReader();
             f.onload = function(e) {
                 _context.decodeAudioData(f.result, function(buffer) {
-                    _sounds[file] = buffer;
-                    playSound(file, 1);
+                    _current = buffer;
                 }, function(error) {
                     alert(error);
                 });
@@ -206,6 +266,14 @@ var Piano = function() {
             f.readAsArrayBuffer(file);
         },
 
-        params: _params
+        playBeat: function(beat) {
+            // "beat1" or "beat2" for a beat, "none" or null to turn off
+            _params.beat = beat;
+
+            if (beat && beat != 'none') {
+                var b = _beats[beat];
+                b();
+            }
+        }
     };
 }();
