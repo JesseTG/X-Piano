@@ -108,6 +108,12 @@ var Piano = function() {
         }
     });
 
+    function notCompatible(error) {
+        $('#app').remove();
+        $('#not-compatible').css('display', 'block');
+        console.log(error);
+    }
+
 
     function loadSound(path) {
         var request = new XMLHttpRequest();
@@ -119,7 +125,7 @@ var Piano = function() {
             _context.decodeAudioData(request.response, function(buffer) {
                 _current = buffer;
             }, function(error) {
-                alert(error);
+                notCompatible(error);
             });
         }
         request.send();
@@ -217,7 +223,7 @@ var Piano = function() {
     try {
         _context = new(window.AudioContext || window.webkitAudioContext)();
     } catch (e) {
-        alert(e + "\nThis browser doesn't support WebAudio.  Use a newer browser like Chrome or Firefox.");
+        notCompatible(e);
     }
 
     //loadSound("sound/kick.mp3"); // https://www.freesound.org/people/TicTacShutUp/sounds/428/

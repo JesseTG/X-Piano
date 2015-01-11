@@ -396,6 +396,11 @@ Content Styles
         }
     }
 }
+#not-compatible {
+  display: none;
+  margin: 20% 0;
+  text-align: center;
+}
 #controls {
     margin-bottom: 1em;
     border: 4px groove #666;
