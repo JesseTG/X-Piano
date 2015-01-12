@@ -397,9 +397,9 @@ Content Styles
     }
 }
 #not-compatible {
-  display: none;
-  margin: 20% 0;
-  text-align: center;
+    display: none;
+    margin: 20% 0;
+    text-align: center;
 }
 #controls {
     margin-bottom: 1em;
@@ -432,41 +432,23 @@ Content Styles
     -webkit-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.75);
-    #col1, #col2, #col3, #col4 {
-        width: 24.25%;
-        margin: 0;
-        padding: 0;
-        display: inline-block;
-        vertical-align: top;
-    }
     & fieldset {
         border: 2px groove #777;
         border-radius: 4px;
-        padding: .2em;
     }
-    legend {
-        padding: 0 .5em;
+    div.input-group {
+        width: 100%;
     }
-    label span {
-        vertical-align: middle;
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: .5em;
-        float: left;
+    label.input-group-addon {
+        width: 40%;
+        input[type=checkbox] {
+            display: none;
+        }
     }
-    input[type=range], input[type=file], select {
-        float: right;
-        width: 50%;
-        padding-left: 0;
-        margin-left: 0;
-        margin-right: .5em;
-    }
-    input[type=file] {
-        width: 65%;
-    }
-    button[type=reset] {
-        margin-left: auto;
-        margin-right: auto;
-        display: inherit;
+    label[for$="-toggle"] {
+        width: 100%;
+        input[type=checkbox] {
+            display: none;
+        }
     }
 }

@@ -82,12 +82,19 @@ var Piano = function() {
 
     $('input[type=checkbox]').change(function(event) {
         var data = event.target.dataset;
-        _params[data.filter][data.parameter] = event.target.checked;
+        if (data.filter && data.parameter) {
+            _params[data.filter][data.parameter] = event.target.checked;
+        }
     });
 
     $('input[type=range], select[data-filter]').change(function(event) {
         var data = event.target.dataset;
         _params[data.filter][data.parameter] = event.target.value;
+    });
+
+    $('label[for$="-input"] input[type=checkbox]').change(function(event) {
+        var control = event.target.parentElement.control;
+        control.disabled = !control.disabled;
     });
 
     $('#reset').click(function(event) {
@@ -113,6 +120,8 @@ var Piano = function() {
         $('#not-compatible').css('display', 'block');
         console.log(error);
     }
+
+
 
 
     function loadSound(path) {
@@ -270,16 +279,6 @@ var Piano = function() {
             };
 
             f.readAsArrayBuffer(file);
-        },
-
-        playBeat: function(beat) {
-            // "beat1" or "beat2" for a beat, "none" or null to turn off
-            _params.beat = beat;
-
-            if (beat && beat != 'none') {
-                var b = _beats[beat];
-                b();
-            }
         }
     };
 }();

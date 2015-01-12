@@ -9,6 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="description" content="X Piano: Now you can make your own piano!">
     <script src="script/jquery-2.1.1.min.js"></script>
+    <script src="script/bootstrap.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap-theme.css">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
     <title>X Piano</title>
 </head>
@@ -29,150 +33,171 @@
     <div id="main_content_wrap" class="outer">
         <main id="main_content" class="inner">
             <section id="app">
-                <form id="controls">
-                    <div id="col1">
-                        <fieldset id="convolve">
-                            <legend>Convolve
-                                <input type="checkbox" data-filter="convolve" data-parameter="enabled" />
-                            </legend>
-                            <label>
-                                <span>Normalize</span>
-                                <input type="checkbox" checked data-filter="convolve" data-parameter="normalize" />
-                            </label>
-                        </fieldset>
-                        <fieldset id="biquad">
-                            <legend>Biquad Filter
-                                <input type="checkbox" data-filter="biquad" data-parameter="enabled" />
-                            </legend>
-                            <label>
-                                <span>Type</span>
-                                <select data-filter="biquad" data-parameter="type">
-                                    <option value="lowpass">Low-pass</option>
-                                    <option value="highpass">High-pass</option>
-                                    <option value="bandpass">Band-pass</option>
-                                    <option value="lowshelf">Low-shelf</option>
-                                    <option value="highshelf">High-shelf</option>
-                                    <option value="peaking">Peaking</option>
-                                    <option value="notch">Notch</option>
-                                    <option value="allpass">All-pass</option>
-                                </select>
-                            </label>
-                            <br/>
-                            <label>
-                                <span>Frequency</span>
-                                <input type="range" min="4.3" max="13" step=".1" value="8.8" data-filter="biquad" data-parameter="frequency" />
-                            </label>
-                            <label>
-                                <span>Detuning</span>
-                                <input type="range" min="0" max="1200" step="1" value="0" data-filter="biquad" data-parameter="detune" />
-                            </label>
-                            <label title="Not used for Low-shelf and High-shelf filters">
-                                <span>Quality</span>
-                                <input type="range" min="-4" max="3" step=".1" value="0" data-filter="biquad" data-parameter="q" />
-                            </label>
-                            <label title="Used only for Low-shelf, High-shelf, and Peaking filters">
-                                <span>Gain (dB)</span>
-                                <input type="range" min="-40" max="40" step="1" value="0" data-filter="biquad" data-parameter="gain" />
-                            </label>
-                        </fieldset>
+                <form id="controls" class="form-horizontal">
+                    <div>
+                        <div>
+                            <div class="col-md-3">
+                                <div id="convolve" class="btn-group" data-toggle="buttons">
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-primary" for="convolve-toggle">Convolve
+                                            <input id="convolve-toggle" type="checkbox" data-filter="convolve" data-parameter="enabled" />
+                                        </label>
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock" for="convolve-normalize-input">Normalize
+                                            <input id="convolve-normalize-toggle" type="checkbox" autocomplete="off" />
+                                        </label>
+                                        <span class="btn btn-default active">
+                                         <input style="display: none" id="convolve-normalize-input"  type="checkbox" data-filter="convolve" data-parameter="normalize" checked/><!--FIX THE INLINE STYLE-->
+                                         </span>
+                                    </div>
+                                </div>
 
+                                <div id="biquad" class="btn-group" data-toggle="buttons">
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-primary" for="biquad-toggle">Biquad Filter
+                                            <input id="biquad-toggle" type="checkbox" data-filter="biquad" data-parameter="enabled" />
+                                        </label>
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock" for="biquad-type-input">
+                                            <input type="checkbox" autocomplete="off" />Type
+                                        </label>
+                                        <select id="biquad-type-input" data-filter="biquad" data-parameter="type" class="form-control">
+                                            <option value="lowpass">Low-pass</option>
+                                            <option value="highpass">High-pass</option>
+                                            <option value="bandpass">Band-pass</option>
+                                            <option value="lowshelf">Low-shelf</option>
+                                            <option value="highshelf">High-shelf</option>
+                                            <option value="peaking">Peaking</option>
+                                            <option value="notch">Notch</option>
+                                            <option value="allpass">All-pass</option>
+                                        </select>
+                                    </div>
 
-                    </div>
-                    <div id="col2">
-                        <fieldset id="compress">
-                            <legend>Compressor
-                                <input type="checkbox" data-filter="compress" data-parameter="enabled" />
-                            </legend>
-                            <label>
-                                <span>Threshold</span>
-                                <input type="range" min="-100" max="0" step=".1" value="-24" data-filter="compress" data-parameter="threshold" />
-                            </label>
-                            <br/>
-                            <label>
-                                <span>Knee</span>
-                                <input type="range" min="0" max="40" step=".1" value="30" data-filter="compress" data-parameter="knee" />
-                            </label>
-                            <br/>
-                            <label>
-                                <span>Ratio</span>
-                                <input type="range" min="1" max="20" step=".1" value="12" data-filter="compress" data-parameter="ratio" />
-                            </label>
-                            <label>
-                                <span>Reduction</span>
-                                <input type="range" min="-20" max="0" step=".1" value="0" data-filter="compress" data-parameter="reduction" />
-                            </label>
-                            <label>
-                                <span>Attack</span>
-                                <input type="range" min="0" max="1" step=".001" value=".003" data-filter="compress" data-parameter="attack" />
-                            </label>
-                            <label>
-                                <span>Release</span>
-                                <input type="range" min="0" max="1" step=".01" value=".25" data-filter="compress" data-parameter="release" />
-                            </label>
-                        </fieldset>
-                    </div>
-                    <div id="col3">
-                        <fieldset id="mix-tone">
-                            <legend>Mix Tone
-                                <input type="checkbox" data-filter="mix_tone" data-parameter="enabled" />
-                            </legend>
-                            <label>
-                                <span>Type</span>
-                                <select data-filter="mix_tone" data-parameter="type">
-                                    <option value="sine">Sine</option>
-                                    <option value="square">Square</option>
-                                    <option value="sawtooth">Sawtooth</option>
-                                    <option value="triangle">Triangle</option>
-                                </select>
-                            </label>
-                            <br/>
-                            <label>
-                                <span>Frequency</span>
-                                <input type="range" min="4.3" max="11" step=".1" value="8.8" data-filter="mix_tone" data-parameter="frequency" />
-                            </label>
-                            <br/>
-                            <label>
-                                <span>Detuning</span>
-                                <input type="range" min="0" max="1200" step="1" value="0" data-filter="mix_tone" data-parameter="detune" />
-                            </label>
-                        </fieldset>
-                        <fieldset id="volume">
-                            <legend>Volume</legend>
-                            <label>
-                                <span>Piano</span>
-                                <input type="range" name="piano-volume" min="0" max="1" step=".01" value="1" data-filter="volume" data-parameter="piano" />
-                            </label>
-                            <!--br/>
-                            <label>
-                                <span>Beat</span>
-                                <input type="range" name="beat-volume" min="0" max="1" step=".01" value="1" data-filter="volume" data-parameter="beat" />
-                            </label-->
-                        </fieldset>
-                    </div>
-                    <div id="col4">
-                        <fieldset id="sound-settings">
-                            <legend>Sound Settings</legend>
-                            <label>
-                                <span>Custom</span>
-                                <input type="file" name="user-sound" accept=".wav,.ogg,.mp3" onchange="Piano.uploadSound(this.files[0])" />
-                            </label>
-                            <br/>
-                            <label>
-                                <span>Loop Sound</span>
-                                <input type="checkbox" checked data-filter="loop" data-parameter="enabled" />
-                            </label>
-                            <!--br/>
-                            <label>
-                                <span>Beat</span>
-                                <select onchange="Piano.playBeat(this.value)">
-                                    <option value="none">None</option>
-                                    <option value="beat1">Beat 1</option>
-                                    <option value="beat2">Beat 2</option>
-                                </select>
-                            </label-->
-                            <br/>
-                            <button type="reset" id="reset">Reset Piano</button>
-                        </fieldset>
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock" for="biquad-frequency-input">
+                                            <input type="checkbox" autocomplete="off" />Frequency</label>
+                                        <input id="biquad-frequency-input" class="form-control" type="range" min="4.3" max="13" step=".1" value="8.8" data-filter="biquad" data-parameter="frequency" />
+                                    </div>
+
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock" for="biquad-detune-input">
+                                            <input type="checkbox" autocomplete="off" />Detuning</label>
+                                        <input id="biquad-detune-input" class="form-control" type="range" min="0" max="1200" step="1" value="0" data-filter="biquad" data-parameter="detune" />
+                                    </div>
+
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock" for="biquad-q-input" title="Not used for Low-shelf and High-shelf filters">
+                                            <input type="checkbox" autocomplete="off" />Quality</label>
+
+                                        <input id="biquad-q-input" class="form-control" type="range" min="-4" max="3" step=".1" value="0" data-filter="biquad" data-parameter="q" />
+
+                                    </div>
+
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock" for="biquad-gain-input" title="Used only for Low-shelf, High-shelf, and Peaking filters">
+                                            <input type="checkbox" autocomplete="off" />Gain</label>
+                                        <input id="biquad-gain-input" class="form-control" type="range" min="-40" max="40" step="1" value="0" data-filter="biquad" data-parameter="gain" />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-3">
+                                <div id="compress" class="btn-group" data-toggle="buttons">
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-primary" for="compress-toggle">Compressor
+                                            <input id="compress-toggle" type="checkbox" data-filter="compress" data-parameter="enabled" />
+                                        </label>
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock" for="compress-threshold-input">
+                                            <input type="checkbox" autocomplete="off" />Threshold
+                                        </label>
+                                        <input id="compress-threshold-input" class="form-control" type="range" min="-100" max="0" step=".1" value="-24" data-filter="compress" data-parameter="threshold" />
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock" for="compress-knee-input">
+                                            <input type="checkbox" autocomplete="off" />Knee
+
+                                        </label>
+                                        <input id="compress-knee-input" class="form-control" type="range" min="0" max="40" step=".1" value="30" data-filter="compress" data-parameter="knee" />
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock" for="compress-ratio-input">
+                                            <input type="checkbox" autocomplete="off" />Ratio
+                                        </label>
+                                        <input id="compress-ratio-input" class="form-control" type="range" min="1" max="20" step=".1" value="12" data-filter="compress" data-parameter="ratio" />
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock" for="compress-reduction-input">
+                                            <input type="checkbox" autocomplete="off" />Reduction
+                                        </label>
+                                        <input id="compress-reduction-input" class="form-control" type="range" min="-20" max="0" step=".1" value="0" data-filter="compress" data-parameter="reduction" />
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock" for="compress-attack-input">
+                                            <input type="checkbox" autocomplete="off" />Attack
+                                        </label>
+                                        <input id="compress-attack-input" class="form-control" type="range" min="0" max="1" step=".001" value=".003" data-filter="compress" data-parameter="attack" />
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock" for="compress-release-input">
+                                            <input type="checkbox" autocomplete="off" />Release
+                                        </label>
+                                        <input id="compress-release-input" class="form-control" type="range" min="0" max="1" step=".01" value=".25" data-filter="compress" data-parameter="release" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div id="mix-tone" class="btn-group" data-toggle="buttons">
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-primary" for="mix-tone-toggle">Mix Tone
+                                            <input id="mix-tone-toggle" type="checkbox" data-filter="mix_tone" data-parameter="enabled" />
+                                        </label>
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock">
+                                            <input type="checkbox" autocomplete="off" />Type</label>
+                                        <select class="form-control" data-filter="mix_tone" data-parameter="type">
+                                            <option value="sine">Sine</option>
+                                            <option value="square">Square</option>
+                                            <option value="sawtooth">Sawtooth</option>
+                                            <option value="triangle">Triangle</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock">
+                                            <input type="checkbox" autocomplete="off" />Frequency</label>
+                                        <input class="form-control" type="range" min="4.3" max="11" step=".1" value="8.8" data-filter="mix_tone" data-parameter="frequency" />
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <label class="btn btn-default input-group-addon lock">
+                                            <input type="checkbox" autocomplete="off" />Detuning</label>
+                                        <input class="form-control" type="range" min="0" max="1200" step="1" value="0" data-filter="mix_tone" data-parameter="detune" />
+                                    </div>
+                                </div>
+                                <div id="sound-settings" class="btn-group" data-toggle="buttons">
+                                    <div class="input-group input-group-sm">
+                                        <label class="input-group-addon" for="piano-volume">
+                                            Volume
+                                        </label>
+                                        <input class="form-control" id="piano-volume" type="range" name="piano-volume" min="0" max="1" step=".01" value="1" data-filter="volume" data-parameter="piano" />
+                                    </div><label><span>Custom Sound</span>
+                                        <input type="file" name="user-sound" accept=".wav,.ogg,.mp3" onchange="Piano.uploadSound(this.files[0])"  title="Custom Sound"/>
+                      </label>
+                                    <label>
+                                        <span>Loop Sound</span>
+                                        <input type="checkbox" checked data-filter="loop" data-parameter="enabled" />
+                                    </label>
+                                    <button type="reset" id="reset" class="btn btn-primary">Reset</button>
+                                </div>
+                            </div>
+                            <div id="col4" class="well well-sm col-md-3">
+                                <p>
+                                    France</p>
+                            </div>
+                        </div>
                     </div>
                 </form>
 
@@ -186,7 +211,7 @@
                     Uh-oh. You're using a browser that doesn't support WebAudio. :(
                 </p>
                 <p>
-                    For using X Piano, I recommend the latest versions of either <a href="http://www.google.com/chrome/" rel="external" target="_blank">Google Chrome</a> or <a href="https://www.mozilla.org/en-US/firefox/new/" rel="external" target="_blank">Firefox</a>. Others may work, too, but no guarantees.  Sorry!
+                    For using X Piano, I recommend the latest versions of either <a href="http://www.google.com/chrome/" rel="external" target="_blank">Google Chrome</a> or <a href="https://www.mozilla.org/en-US/firefox/new/" rel="external" target="_blank">Firefox</a>. Others may work, too, but no guarantees. Sorry!
                 </p>
             </section>
         </main>
