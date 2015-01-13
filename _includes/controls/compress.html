@@ -1,0 +1,68 @@
+<div id="compress" class="btn-group" data-toggle="buttons">
+    <div class="input-group input-group-sm">
+        <label class="btn btn-block btn-primary" for="compress-toggle">
+            <span>Compressor</span>
+            <input id="compress-toggle" type="checkbox" data-filter="compress" data-parameter="enabled" />
+        </label>
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="compress-threshold-input">
+            <input type="checkbox" autocomplete="off" />
+            <span>Thresh.</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <input id="compress-threshold-input" class="form-control" type="range" min="-100" max="0" step=".1" value="-24" data-filter="compress" data-parameter="threshold" />
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="compress-knee-input">
+            <input type="checkbox" autocomplete="off" />
+            <span>Knee</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <input id="compress-knee-input" class="form-control" type="range" min="0" max="40" step=".1" value="30" data-filter="compress" data-parameter="knee" />
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="compress-ratio-input">
+            <input type="checkbox" autocomplete="off" />
+            <span>Ratio</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <input id="compress-ratio-input" class="form-control" type="range" min="1" max="20" step=".1" value="12" data-filter="compress" data-parameter="ratio" />
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="compress-reduction-input">
+            <input type="checkbox" autocomplete="off" />
+            <span>Reduct.</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <input id="compress-reduction-input" class="form-control" type="range" min="-20" max="0" step=".1" value="0" data-filter="compress" data-parameter="reduction" />
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="compress-attack-input">
+            <input type="checkbox" autocomplete="off" />
+            <span>Attack</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <input id="compress-attack-input" class="form-control" type="range" min="0" max="1" step=".001" value=".003" data-filter="compress" data-parameter="attack" />
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="compress-release-input">
+            <input type="checkbox" autocomplete="off" />
+            <span>Release</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <input id="compress-release-input" class="form-control" type="range" min="0" max="1" step=".01" value=".25" data-filter="compress" data-parameter="release" />
+    </div>
+</div>

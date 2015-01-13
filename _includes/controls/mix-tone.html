@@ -1,0 +1,43 @@
+<div id="mix-tone" class="btn-group" data-toggle="buttons">
+    <div class="input-group input-group-sm">
+        <label class="btn btn-block btn-primary" for="mix-tone-toggle">
+            <span>Mix Tone</span>
+            <input id="mix-tone-toggle" type="checkbox" data-filter="mix_tone" data-parameter="enabled" />
+        </label>
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="mix-tone-type-input">
+            <input type="checkbox" autocomplete="off" />
+            <span>Type</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <select id="mix-tone-type-input" class="form-control" data-filter="mix_tone" data-parameter="type">
+            <option value="sine">Sine</option>
+            <option value="square">Square</option>
+            <option value="sawtooth">Sawtooth</option>
+            <option value="triangle">Triangle</option>
+        </select>
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="mix-tone-frequency-input">
+            <input type="checkbox" autocomplete="off" />
+            <span>Freq.</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <input id="mix-tone-frequency-input" class="form-control" type="range" min="4.3" max="11" step=".1" value="8.8" data-filter="mix_tone" data-parameter="frequency" />
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="mix-tone-detuning-input">
+            <input type="checkbox" autocomplete="off" />
+            <span>Detuning</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <input id="mix-tone-detuning-input" class="form-control" type="range" min="0" max="1200" step="1" value="0" data-filter="mix_tone" data-parameter="detune" />
+    </div>
+</div>

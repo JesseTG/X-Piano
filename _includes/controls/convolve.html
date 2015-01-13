@@ -1,0 +1,22 @@
+<div id="convolve" class="btn-group" data-toggle="buttons" style="width: 100%">
+    <div class="input-group input-group-sm">
+        <label class="btn btn-block btn-primary" for="convolve-toggle">
+            <span>Convolve</span>
+            <input id="convolve-toggle" type="checkbox" data-filter="convolve" data-parameter="enabled" />
+        </label>
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="convolve-normalize-input">
+            <input id="convolve-normalize-toggle" type="checkbox" autocomplete="off" />
+            <span>Norm.</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <span class="btn btn-block btn-default form-control active">
+            <input style="display: none" id="convolve-normalize-input"  type="checkbox" data-filter="convolve" data-parameter="normalize" checked/>
+            <span class="glyphicon glyphicon-off"></span>
+        <!--FIX THE INLINE STYLE-->
+        </span>
+    </div>
+</div>

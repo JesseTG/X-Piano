@@ -1,0 +1,67 @@
+<div id="biquad" class="btn-group" data-toggle="buttons">
+    <div class="input-group input-group-sm">
+        <label class="btn btn-block btn-primary" for="biquad-toggle">
+            <span>Biquad Filter</span>
+            <input id="biquad-toggle" type="checkbox" data-filter="biquad" data-parameter="enabled" />
+        </label>
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="biquad-type-input">
+            <input type="checkbox" autocomplete="off" />
+            <span>Type</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <select id="biquad-type-input" data-filter="biquad" data-parameter="type" class="form-control">
+            <option value="lowpass">Low-pass</option>
+            <option value="highpass">High-pass</option>
+            <option value="bandpass">Band-pass</option>
+            <option value="lowshelf">Low-shelf</option>
+            <option value="highshelf">High-shelf</option>
+            <option value="peaking">Peaking</option>
+            <option value="notch">Notch</option>
+            <option value="allpass">All-pass</option>
+        </select>
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="biquad-frequency-input">
+            <input type="checkbox" autocomplete="off" />
+            <span>Freq.</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <input id="biquad-frequency-input" class="form-control" type="range" min="4.3" max="13" step=".1" value="8.8" data-filter="biquad" data-parameter="frequency" />
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="biquad-detune-input">
+            <input type="checkbox" autocomplete="off" />
+            <span>Detuning</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <input id="biquad-detune-input" class="form-control" type="range" min="0" max="1200" step="1" value="0" data-filter="biquad" data-parameter="detune" />
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="biquad-q-input" title="Not used for Low-shelf and High-shelf filters">
+            <input type="checkbox" autocomplete="off" />
+            <span>Quality</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+
+        <input id="biquad-q-input" class="form-control" type="range" min="-4" max="3" step=".1" value="0" data-filter="biquad" data-parameter="q" />
+    </div>
+
+    <div class="input-group input-group-sm">
+        <label class="btn btn-default input-group-addon lock" for="biquad-gain-input" title="Used only for Low-shelf, High-shelf, and Peaking filters">
+            <input type="checkbox" autocomplete="off" />
+            <span>Gain</span>
+            <span class="glyphicon glyphicon-lock"></span>
+        </label>
+        
+        <input id="biquad-gain-input" class="form-control" type="range" min="-40" max="40" step="1" value="0" data-filter="biquad" data-parameter="gain" />
+    </div>
+</div>
