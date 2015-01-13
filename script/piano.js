@@ -93,12 +93,32 @@ var Piano = function() {
     });
 
     $('label[for$="-input"] input[type=checkbox]').change(function(event) {
-        var control = event.target.parentElement.control;
+        var parent = event.target.parentElement;
+        var control = parent.control;
         control.disabled = !control.disabled;
+
+        $(parent).children('.glyphicon').toggle(0);
+    });
+
+    $(document).on('change', '.btn-file :file', function() {
+        var input = $(this),
+            numFiles = input.get(0).files ? input.get(0).files.length : 1,
+            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', [numFiles, label]);
+    });
+
+    $(document).ready(function() {
+        $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+            if (label) {
+                $('.btn-file .filename').text(label);
+            }
+        });
     });
 
     $('#reset').click(function(event) {
         loadSound('sound/default.wav');
+
+        $('.btn-file .filename').text("Custom Sound");
 
         for (var i in _params) {
             for (var j in _params[i]) {

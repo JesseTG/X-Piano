@@ -441,14 +441,41 @@ Content Styles
     }
     label.input-group-addon {
         width: 40%;
+        text-align: left;
         input[type=checkbox] {
+            display: none;
+        }
+        .glyphicon {
+            vertical-align: text-top;
+        }
+        .glyphicon.glyphicon-lock {
             display: none;
         }
     }
     label[for$="-toggle"] {
-        width: 100%;
         input[type=checkbox] {
             display: none;
+        }
+    }
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+        input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
         }
     }
 }
