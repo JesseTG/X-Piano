@@ -1,3 +1,5 @@
 sass:
     style: :compressed
     sass_dir: stylesheets/_sass
+
+exclude: ["Gemfile", ".gitignore", "README.md"]
