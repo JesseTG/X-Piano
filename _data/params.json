@@ -1,0 +1,37 @@
+{
+    "loop": {
+        "enabled": true
+    },
+    "convolve": {
+        "enabled": false,
+        "normalize": true
+    },
+    "compress": {
+        "threshold": -24,
+        "knee": 30,
+        "ratio": 12,
+        "enabled": false,
+        "reduction": 0,
+        "attack": 0.003
+    },
+    "mix_tone": {
+        "enabled": false,
+        "frequency": 8.8,
+        "type": "sine",
+        "detune": 0
+    },
+    "biquad": {
+        "enabled": false,
+        "type": "lowpass",
+        "biquad": 8.5,
+        "q": 0,
+        "gain": 0,
+        "detune": 0
+    },
+    "volume": {
+        "piano": 1
+    },
+    "piano" : {
+        "custom-label" : "Custom Sound"
+    }
+}
