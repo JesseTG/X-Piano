@@ -13,7 +13,7 @@
    height="177.55821"
    id="piano"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="piano.svg"
    onmouseup="Piano.stop()">
   <defs
@@ -187,11 +187,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="411.14069"
-     inkscape:cy="54.151981"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="712.93391"
+     inkscape:cy="155.8482"
      inkscape:document-units="px"
-     inkscape:current-layer="piano"
+     inkscape:current-layer="black-keys"
      showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="692"
@@ -218,7 +218,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -236,9 +236,8 @@
        id="use5453"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="1" />
+       data-pitch="1"
+       data-key="Q" />
     <use
        x="59.060398"
        y="200.55374"
@@ -247,9 +246,8 @@
        id="use5455"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="1.105" />
+       data-pitch="1.105"
+       data-key="W" />
     <use
        x="118.11666"
        y="200.55374"
@@ -258,9 +256,8 @@
        id="use5457"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="1.25" />
+       data-pitch="1.25"
+       data-key="E" />
     <use
        x="177.17291"
        y="200.55374"
@@ -269,9 +266,8 @@
        id="use5459"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="1.35" />
+       data-pitch="1.35"
+       data-key="R" />
     <use
        x="236.22087"
        y="200.55374"
@@ -280,9 +276,8 @@
        id="use5461"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="1.5" />
+       data-pitch="1.5"
+       data-key="T" />
     <use
        x="295.2854"
        y="200.55374"
@@ -291,9 +286,8 @@
        id="use5463"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="1.7" />
+       data-pitch="1.7"
+       data-key="Y" />
     <use
        x="354.34167"
        y="200.55374"
@@ -302,9 +296,8 @@
        id="use5465"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="1.9" />
+       data-pitch="1.9"
+       data-key="U" />
     <use
        x="413.38962"
        y="200.55374"
@@ -313,9 +306,8 @@
        id="use5467"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="2" />
+       data-pitch="2"
+       data-key="I" />
     <use
        x="472.45416"
        y="200.55374"
@@ -324,9 +316,8 @@
        id="use5469"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="2.25" />
+       data-pitch="2.25"
+       data-key="Z" />
     <use
        x="531.51044"
        y="200.55374"
@@ -335,9 +326,8 @@
        id="use5471"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="2.5" />
+       data-pitch="2.5"
+       data-key="X" />
     <use
        x="590.56665"
        y="200.55374"
@@ -346,9 +336,8 @@
        id="use5473"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="2.655" />
+       data-pitch="2.655"
+       data-key="C" />
     <use
        x="649.62292"
        y="200.55374"
@@ -357,9 +346,8 @@
        id="use5475"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="3" />
+       data-pitch="3"
+       data-key="V" />
     <use
        x="708.6709"
        y="200.55374"
@@ -368,9 +356,8 @@
        id="use5477"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="3.3" />
+       data-pitch="3.3"
+       data-key="B" />
     <use
        x="767.73541"
        y="200.55374"
@@ -379,9 +366,8 @@
        id="use5479"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="3.8" />
+       data-pitch="3.8"
+       data-key="N" />
     <use
        x="826.79169"
        y="200.55374"
@@ -390,9 +376,8 @@
        id="use5481"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="4" />
+       data-pitch="4"
+       data-key="M" />
     <g
        id="c1"
        transform="matrix(0.89756817,0,0,1.2641422,-0.00525671,-441.54712)"
@@ -413,11 +398,6 @@
          style="fill:url(#linearGradient5493);fill-opacity:1;fill-rule:nonzero;stroke:#3b3b3b;stroke-width:0.93094099;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:0"
          d="m 4.5309482,912.86218 56.6383748,0 c 2.233146,0 4.030949,1.58157 4.030949,3.54612 l 0,113.1088 c 0,1.9645 -1.797803,3.5461 -4.030949,3.5461 l -56.6383748,0 C 2.2978029,1033.0632 0.5,1031.4816 0.5,1029.5171 l 0,-113.1088 c 0,-1.96455 1.7978029,-3.54612 4.0309482,-3.54612 z"
          id="key-top" />
-      <path
-         inkscape:connector-curvature="0"
-         id="rect3850-3-1"
-         d="m 4.0559863,912.46996 c -2.2716897,0 -4.10838977,1.57959 -4.10838977,3.55557 l 0,113.77787 c 0,1.6054 1.19755677,2.9312 2.86878977,3.3814 l 0,14.0482 c 0,2.8176 1.6612026,5.0972 3.7188002,5.0972 l 52.6298985,0 c 2.057588,0 3.718801,-2.2796 3.718801,-5.0972 l 0,-14.0482 c 1.671222,-0.4502 2.868789,-1.776 2.868789,-3.3814 l 0,-113.77787 c 0,-1.97598 -1.83671,-3.55557 -4.108389,-3.55557 l -57.5882997,0 z"
-         style="opacity:0;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none" />
     </g>
   </g>
   <g
@@ -456,9 +436,8 @@
        id="use5495"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="1.075" />
+       data-pitch="1.075"
+       data-key="2" />
     <use
        x="59.056252"
        y="199.80325"
@@ -467,9 +446,8 @@
        id="use5497"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="1.2" />
+       data-pitch="1.2"
+       data-key="3" />
     <use
        x="177.16876"
        y="199.80325"
@@ -478,9 +456,8 @@
        id="use5501"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="1.4" />
+       data-pitch="1.4"
+       data-key="5" />
     <use
        x="236.22501"
        y="199.80325"
@@ -489,9 +466,8 @@
        id="use5503"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="1.6" />
+       data-pitch="1.6"
+       data-key="6" />
     <use
        x="295.28125"
        y="199.80325"
@@ -500,9 +476,8 @@
        id="use5505"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="1.8" />
+       data-pitch="1.8"
+       data-key="7" />
     <use
        x="413.39377"
        y="199.80325"
@@ -511,9 +486,8 @@
        id="use5509"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="2.1" />
+       data-pitch="2.1"
+       data-key="9" />
     <use
        x="472.45001"
        y="199.80325"
@@ -522,9 +496,8 @@
        id="use5511"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="2.4" />
+       data-pitch="2.4"
+       data-key="S" />
     <use
        x="590.5625"
        y="199.80325"
@@ -533,9 +506,8 @@
        id="use5515"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="2.8" />
+       data-pitch="2.8"
+       data-key="F" />
     <use
        x="649.61877"
        y="199.80325"
@@ -544,9 +516,8 @@
        id="use5517"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="3.15" />
+       data-pitch="3.15"
+       data-key="G" />
     <use
        x="708.67505"
        y="199.80325"
@@ -555,9 +526,8 @@
        id="use5519"
        width="886.84381"
        height="177.55821"
-       onmousedown="Piano.lowerKey(this)"
-       onmouseup="Piano.raiseKey(this)"
-       pitch="3.5" />
+       data-pitch="3.5"
+       data-key="H" />
   </g>
 </svg>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
