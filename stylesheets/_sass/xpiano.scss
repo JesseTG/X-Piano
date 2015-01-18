@@ -1,0 +1,126 @@
+/*******************************************************************************
+Content Styles
+*******************************************************************************/
+
+#piano-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+}
+#piano {
+    margin-left: auto;
+    margin-right: auto;
+    display: inherit;
+    height: 12em;
+    #white-keys use {
+        transform: translateY(0);
+        transition: transform .05s ease-out;
+        &:active, &.active {
+            transform: translateY(8px);
+        }
+    }
+    #black-keys use {
+        transform: scaleY(1);
+        transition: transform .05s ease-out;
+        &:active, &.active {
+            transform: scaleY(1.05);
+        }
+    }
+}
+#not-compatible {
+    display: none;
+    margin: 20% 0;
+    text-align: center;
+}
+#controls {
+    margin-bottom: 1em;
+    border: 4px groove #666;
+    padding: 1em;
+    border-radius: 8px;
+    display: inline-block;
+    width: 100%;
+    background: #fefefe;
+    /* Old browsers */
+    
+    background: -moz-linear-gradient(-45deg, #fefefe 0%, #f2f2f2 30%, #f2f2f2 66%, #f2f2f2 66%, #dbdbdb 79%, #e2e2e2 100%);
+    /* FF3.6+ */
+    
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #fefefe), color-stop(30%, #f2f2f2), color-stop(66%, #f2f2f2), color-stop(66%, #f2f2f2), color-stop(79%, #dbdbdb), color-stop(100%, #e2e2e2));
+    /* Chrome,Safari4+ */
+    
+    background: -webkit-linear-gradient(-45deg, #fefefe 0%, #f2f2f2 30%, #f2f2f2 66%, #f2f2f2 66%, #dbdbdb 79%, #e2e2e2 100%);
+    /* Chrome10+,Safari5.1+ */
+    
+    background: -o-linear-gradient(-45deg, #fefefe 0%, #f2f2f2 30%, #f2f2f2 66%, #f2f2f2 66%, #dbdbdb 79%, #e2e2e2 100%);
+    /* Opera 11.10+ */
+    
+    background: linear-gradient(135deg, #fefefe 0%, #f2f2f2 30%, #f2f2f2 66%, #f2f2f2 66%, #dbdbdb 79%, #e2e2e2 100%);
+    /* W3C */
+    
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.75);
+    & fieldset {
+        border: 2px groove #777;
+        border-radius: 4px;
+    }
+    div.input-group {
+        width: 100%;
+    }
+    label.input-group-addon {
+        width: 40%;
+        text-align: left;
+        input[type=checkbox] {
+            display: none;
+        }
+        .glyphicon {
+            vertical-align: text-top;
+        }
+        .glyphicon.glyphicon-lock {
+            display: none;
+        }
+    }
+    label[for$="-toggle"] {
+        input[type=checkbox] {
+            display: none;
+        }
+    }
+    .form-control[type="range"]:not([disabled]) {
+        background: #ffffff;
+        /* Old browsers */
+        
+        background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 47%, #cccccc 50%, #ffffff 53%, #ffffff 100%);
+        /* FF3.6+ */
+        
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(47%, #ffffff), color-stop(50%, #cccccc), color-stop(53%, #ffffff), color-stop(100%, #ffffff));
+        /* Chrome,Safari4+ */
+        
+        background: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 47%, #cccccc 50%, #ffffff 53%, #ffffff 100%);
+        /* Chrome10+,Safari5.1+ */
+        
+        background: -o-linear-gradient(top, #ffffff 0%, #ffffff 47%, #cccccc 50%, #ffffff 53%, #ffffff 100%);
+        /* Opera 11.10+ */
+        
+        background: linear-gradient(to bottom, #ffffff 0%, #ffffff 47%, #cccccc 50%, #ffffff 53%, #ffffff 100%);
+        /* W3C */
+    }
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+    }
+}
