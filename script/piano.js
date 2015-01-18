@@ -1,84 +1,20 @@
+---
+---
+
+{% assign params = site.data.params | replace: '=>', ':' %}
+/*
+
+{% comment %}
+I'm not sure if throwing in a whole JSON file like this is a really good use of Liquid or a really bad one.
+{% endcomment %}
+*/
+
 var Piano = function() {
     var _context;
     var _playing = {};
-    var _defaults = {
-        beat: "none",
-        loop: {
-            enabled: true
-        },
-        convolve: {
-            enabled: false,
-            normalize: true
-        },
-        compress: {
-            threshold: -24,
-            knee: 30,
-            ratio: 12,
-            enabled: false,
-            reduction: 0,
-            attack: .003
-        },
-        mix_tone: {
-            enabled: false,
-            frequency: 8.8,
-            type: "sine",
-            detune: 0
-        },
-        biquad: {
-            enabled: false,
-            type: "lowpass",
-            biquad: 8.5,
-            q: 0,
-            gain: 0,
-            detune: 0
-        },
-        volume: {
-            piano: 1,
-            beat: 1
-        }
-    };
 
-    // Cloning objects in JavaScript is a bitch.
-    var _params = {
-        beat: "none",
-        loop: {
-            enabled: true
-        },
-        convolve: {
-            enabled: false,
-            normalize: true
-        },
-        compress: {
-            threshold: -24,
-            knee: 30,
-            ratio: 12,
-            enabled: false,
-            reduction: 0,
-            attack: .003
-        },
-        mix_tone: {
-            enabled: false,
-            frequency: 8.8,
-            type: "sine",
-            detune: 0
-        },
-        biquad: {
-            enabled: false,
-            type: "lowpass",
-            biquad: 8.5,
-            q: 0,
-            gain: 0,
-            detune: 0
-        },
-        volume: {
-            piano: 1,
-            beat: 1
-        }
-    };
+    var _params = {{ params }};
     var _current;
-
-    var _beats = {};
-
 
     $('input[type=checkbox]').change(function(event) {
         var data = event.target.dataset;
@@ -87,52 +23,41 @@ var Piano = function() {
         }
     });
 
+
     $('input[type=range], select[data-filter]').change(function(event) {
         var data = event.target.dataset;
         _params[data.filter][data.parameter] = event.target.value;
     });
 
-    $('label[for$="-input"] input[type=checkbox]').change(function(event) {
-        var parent = event.target.parentElement;
-        var control = parent.control;
-        control.disabled = !control.disabled;
-
-        $(parent).children('.glyphicon').toggle(0);
-    });
-
-    $(document).on('change', '.btn-file :file', function() {
-        var input = $(this),
-            numFiles = input.get(0).files ? input.get(0).files.length : 1,
-            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-        input.trigger('fileselect', [numFiles, label]);
-    });
-
-    $(document).ready(function() {
-        $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-            if (label) {
-                $('.btn-file .filename').text(label);
-            }
-        });
-    });
-
+    var ranges = $('input[type=range]');
+    var toggles = $('input[type=checkbox][id$="-toggle"], input[type=checkbox][id$="-input"]');
+    var selects = $('select[data-filter]');
+    var file = $('.btn-file :file');
     $('#reset').click(function(event) {
         loadSound('sound/default.wav');
-
-        $('.btn-file .filename').text("Custom Sound");
-
-        for (var i in _params) {
-            for (var j in _params[i]) {
-                _params[i][j] = _defaults[i][j];
-
-            }
-        }
-
         for (var i in _playing) {
             for (var j in _playing[i]) {
                 _playing[i][j].stop();
                 delete _playing[i][j];
             }
         }
+        _params = {{ params }};
+        
+        ranges.trigger('reset');
+        toggles.trigger('reset');
+        selects.trigger('reset');
+        file.trigger('reset', [_params["piano"]["custom-label"]]);
+    });
+
+    $('#random').click(function(event) {
+        ranges.trigger('random');
+        toggles.trigger('random');
+        selects.trigger('random');
+    });
+
+    $('#mutate').click(function(event) {
+        ranges.trigger('mutate');
+        selects.trigger('mutate');
     });
 
     function notCompatible(error) {
@@ -140,9 +65,6 @@ var Piano = function() {
         $('#not-compatible').css('display', 'block');
         console.log(error);
     }
-
-
-
 
     function loadSound(path) {
         var request = new XMLHttpRequest();
@@ -255,27 +177,24 @@ var Piano = function() {
         notCompatible(e);
     }
 
-    //loadSound("sound/kick.mp3"); // https://www.freesound.org/people/TicTacShutUp/sounds/428/
-    //loadSound("sound/snare.mp3"); // https://www.freesound.org/people/TicTacShutUp/sounds/439/
     loadSound("sound/default.wav");
 
     return {
+        playing: _playing,
         lowerKey: function(keyElement) {
-            var attribs = keyElement.attributes;
-            var pitch = keyElement.hasAttribute('pitch') ? Number.parseFloat(attribs['pitch'].value) : 1;
-
+            var pitch = keyElement.dataset.pitch || 1;
+            console.log(keyElement);
             _playing[keyElement] = playSound(_current, pitch);
         },
 
         raiseKey: function(keyElement) {
             var key = _playing[keyElement];
-            if (key) {
+            console.log(keyElement);
                 for (var i in key) {
                     key[i].stop();
-                    delete key[i];
                 }
-                delete key;
-            }
+                _playing[keyElement] = null;
+            
         },
 
         stop: function() {
