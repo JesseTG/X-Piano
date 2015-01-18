@@ -8,29 +8,29 @@
 
     <div class="btn-group input-group input-group-sm" data-toggle="buttons">
         <label class="input-group-addon" for="loop-sound-input">
-            Loop Sound
+            Loop
         </label>
         <span class="btn btn-block btn-default form-control active">
-                                         <input style="display: none" id="loop-sound-input"  type="checkbox" data-filter="loop" data-parameter="enabled" checked/>
-                                         <span class="glyphicon glyphicon-off"></span>
+            <input style="display: none" id="loop-sound-input"  type="checkbox" data-filter="loop" checked data-parameter="enabled"  />
+        <span class="glyphicon glyphicon-off"></span>
         <!--FIX THE INLINE STYLE-->
         </span>
     </div>
 
 
-    <label class="btn btn-primary btn-file btn-block">
+    <label class="btn btn-sm btn-primary btn-file btn-block">
         <span class="filename">Custom Sound</span>
         <input type="file" name="user-sound" accept=".wav,.ogg,.mp3" onchange="Piano.uploadSound(this.files[0])" title="Custom Sound" />
     </label>
 
-    <div class="btn-group btn-group-xs btn-group-justified" role="group" aria-label="...">
-        <div class="btn-group btn-group-xs" role="group">
-            <button id="reset" type="reset" class="btn btn-primary">Reset</button>
+    <div class="btn-group btn-group-sm btn-group-justified" role="group">
+        <div class="btn-group btn-group-sm" role="group">
+            <button id="reset" type="button" class="btn btn-primary">Reset</button>
         </div>
-        <div class="btn-group btn-group-xs" role="group">
-            <button id="randomize" type="button" class="btn btn-primary">Randomize</button>
+        <div class="btn-group btn-group-sm" role="group">
+            <button id="random" type="button" class="btn btn-primary">Random</button>
         </div>
-        <div class="btn-group btn-group-xs" role="group">
+        <div class="btn-group btn-group-sm" role="group">
             <button id="mutate" type="button" class="btn btn-primary">Mutate</button>
         </div>
     </div>
