@@ -42,7 +42,7 @@ var Piano = function() {
             }
         }
         _params = {{ params }};
-        
+
         ranges.trigger('reset');
         toggles.trigger('reset');
         selects.trigger('reset');
@@ -182,19 +182,22 @@ var Piano = function() {
     return {
         playing: _playing,
         lowerKey: function(keyElement) {
-            var pitch = keyElement.dataset.pitch || 1;
-            console.log(keyElement);
-            _playing[keyElement] = playSound(_current, pitch);
+            if (!_playing[keyElement]) {
+
+
+                var pitch = $(keyElement).data('pitch') || 1;
+                _playing[keyElement] = playSound(_current, pitch);
+            }
         },
 
         raiseKey: function(keyElement) {
             var key = _playing[keyElement];
-            console.log(keyElement);
+            if (key) {
                 for (var i in key) {
                     key[i].stop();
                 }
                 _playing[keyElement] = null;
-            
+            }
         },
 
         stop: function() {
