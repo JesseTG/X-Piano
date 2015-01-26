@@ -20,7 +20,8 @@
 
     <label class="btn btn-sm btn-primary btn-file btn-block">
         <span class="filename">Custom Sound</span>
-        <input type="file" name="user-sound" accept=".wav,.ogg,.mp3" onchange="Piano.uploadSound(this.files[0])" title="Custom Sound" />
+        <span class="glyphicon glyphicon-time loading"></span>
+        <input type="file" name="user-sound" accept="audio/*" onchange="Piano.uploadSound(this.files[0])" title="Custom Sound" />
     </label>
 
     <div class="btn-group btn-group-sm btn-group-justified" role="group">
