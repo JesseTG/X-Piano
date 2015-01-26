@@ -32,7 +32,13 @@
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
+        <div class="messages">
+            {% include audio-error.html %}
+        </div>
         <main id="main_content" class="inner">
+            <noscript>
+                {% include noscript.html %}
+            </noscript>
             <section id="app">
                 <form id="controls" class="form-horizontal">
                     <div>
@@ -59,6 +65,7 @@
                 </div>
 
             </section>
+
             <section id="not-compatible">
                 {% include not-compatible.html %}
             </section>
@@ -78,6 +85,7 @@
     </div>
 
     <script src="script/piano.js"></script>
+
 </body>
 
 </html>
