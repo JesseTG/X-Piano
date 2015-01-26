@@ -33,6 +33,8 @@ var Piano = function() {
     var toggles = $('input[type=checkbox][id$="-toggle"], input[type=checkbox][id$="-input"]');
     var selects = $('select[data-filter]');
     var file = $('.btn-file :file');
+    var fileLabel = $('.btn-file .filename');
+    var audioError = $('#audio-error');
     $('#reset').click(function(event) {
         loadSound('sound/default.wav');
         for (var i in _playing) {
@@ -63,7 +65,7 @@ var Piano = function() {
     function notCompatible(error) {
         $('#app').remove();
         $('#not-compatible').css('display', 'block');
-        console.log(error);
+        console.error(error);
     }
 
     function loadSound(path) {
@@ -180,12 +182,10 @@ var Piano = function() {
     loadSound("sound/default.wav");
 
     return {
-        playing: _playing,
         lowerKey: function(keyElement) {
             if (!_playing[keyElement]) {
-
-
                 var pitch = $(keyElement).data('pitch') || 1;
+                console.debug("Playing key", pitch);
                 _playing[keyElement] = playSound(_current, pitch);
             }
         },
@@ -196,7 +196,8 @@ var Piano = function() {
                 for (var i in key) {
                     key[i].stop();
                 }
-                _playing[keyElement] = null;
+                console.debug("Stopped playing key", $(keyElement).data('pitch') || 1);
+                delete _playing[keyElement];
             }
         },
 
@@ -206,21 +207,28 @@ var Piano = function() {
                     _playing[i][j].stop();
                     delete _playing[i][j];
                 }
-
+                delete _playing[i];
             }
         },
 
         uploadSound: function(file) {
             var f = new FileReader();
+            var text = fileLabel.text();
             f.onload = function(e) {
+
                 _context.decodeAudioData(f.result, function(buffer) {
                     _current = buffer;
                 }, function(error) {
-                    alert(error);
+                    console.error(error);
+                    
+                    audioError.modal();
+                    fileLabel.text(text);
                 });
             };
 
-            f.readAsArrayBuffer(file);
+            if (file) {
+              f.readAsArrayBuffer(file);
+            }
         }
     };
 }();

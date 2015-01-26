@@ -107,15 +107,20 @@ $(document).ready(function() {
         fileLabel.text(defaultText);
     });
 
-
+    var piano = $('#piano');
     var keys = $('#white-keys use, #black-keys use');
-    keys.mousedown(function(event) {
+    var down = function(event) {
         Piano.lowerKey(event.target);
-    });
+    };
+    keys.mousedown(down);
 
-    keys.mouseup(function(event) {
+    var up = function(event) {
         Piano.raiseKey(event.target);
-    });
+    };
+    keys.mouseup(up);
+    
+    $(document).mouseleave(Piano.stop);
+    $(document).blur(Piano.stop);
 
     var keyMappings = {};
     keys.each(function(i, element) {
@@ -127,16 +132,16 @@ $(document).ready(function() {
     $(document).keydown(function(event) {
         var char = event.which;
         if (char in keyMappings) {
-            Piano.lowerKey(keyMappings[char]);
+            var pianoKey = keyMappings[char];
+            Piano.lowerKey(pianoKey);
         }
     });
 
     $(document).keyup(function(event) {
         var char = event.which;
         if (char in keyMappings) {
-            Piano.raiseKey(keyMappings[char]);
+            var pianoKey = keyMappings[char];
+            Piano.raiseKey(pianoKey);
         }
     });
-
-
 });
