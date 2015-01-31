@@ -1,10 +1,11 @@
 $(document).ready(function() {
     // When all content is loaded...
 
+    var doc = $(document);
     var MUTATE_FACTOR = 10;
     var MUTATE_ODDS = 0.5;
 
-    $(document).on('change', '.btn-file :file', function() {
+    doc.on('change', '.btn-file :file', function() {
         // When the "Choose File" button is clicked...
         var input = $(this),
             numFiles = input.get(0).files ? input.get(0).files.length : 1,
@@ -107,6 +108,11 @@ $(document).ready(function() {
         fileLabel.text(defaultText);
     });
 
+    var helpMessage = $('#help-message');
+    $('#help').click(function(event) {
+      helpMessage.modal();
+    });
+
     var piano = $('#piano');
     var keys = $('#white-keys use, #black-keys use');
     var down = function(event) {
@@ -119,8 +125,8 @@ $(document).ready(function() {
     };
     keys.mouseup(up);
     
-    $(document).mouseleave(Piano.stop);
-    $(document).blur(Piano.stop);
+    doc.mouseleave(Piano.stop);
+    doc.blur(Piano.stop);
 
     var keyMappings = {};
     keys.each(function(i, element) {
@@ -129,7 +135,7 @@ $(document).ready(function() {
     });
 
 
-    $(document).keydown(function(event) {
+    doc.keydown(function(event) {
         var char = event.which;
         if (char in keyMappings) {
             var pianoKey = keyMappings[char];
@@ -137,7 +143,7 @@ $(document).ready(function() {
         }
     });
 
-    $(document).keyup(function(event) {
+    doc.keyup(function(event) {
         var char = event.which;
         if (char in keyMappings) {
             var pianoKey = keyMappings[char];
