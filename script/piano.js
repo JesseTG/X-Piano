@@ -185,7 +185,6 @@ var Piano = function() {
         lowerKey: function(keyElement) {
             if (!_playing[keyElement]) {
                 var pitch = $(keyElement).data('pitch') || 1;
-                console.debug("Playing key", pitch);
                 _playing[keyElement] = playSound(_current, pitch);
             }
         },
@@ -196,7 +195,6 @@ var Piano = function() {
                 for (var i in key) {
                     key[i].stop();
                 }
-                console.debug("Stopped playing key", $(keyElement).data('pitch') || 1);
                 delete _playing[keyElement];
             }
         },
