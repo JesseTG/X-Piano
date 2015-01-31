@@ -5,4 +5,6 @@ sass:
 gems:
   - jekyll-redirect-from
 
+baseurl: "http://jessetg.github.io"
+
 exclude: ["Gemfile", ".gitignore", "README.md"]
