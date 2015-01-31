@@ -2,4 +2,7 @@ sass:
     style: :compressed
     sass_dir: stylesheets/_sass
 
+gems:
+  - jekyll-redirect-from
+
 exclude: ["Gemfile", ".gitignore", "README.md"]
